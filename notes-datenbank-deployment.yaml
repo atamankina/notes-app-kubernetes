@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notes-database-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: notes-database
+  template:
+    metadata:
+      labels:
+        component: notes-database
+    spec:
+      containers:
+      - name: notes-database
+        image: fhsinchy/notes-postgres
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "250m"
+        ports:
+        - containerPort: 5432
+        env:
+        - name: POSTGRES_PASSWORD
+          value: 63eaQB9wtLqmNBpg
+        - name: POSTGRES_DB
+          value: notesdb
+
