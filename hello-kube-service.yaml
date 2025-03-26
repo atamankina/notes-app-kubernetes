@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-kube-service
+spec:
+  type: LoadBalancer
+  selector:
+    name: hello-kube-pod
+  ports:
+  - port: 80
+    targetPort: 80
